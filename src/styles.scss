@@ -1,23 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/theming';
+@use 'sass:map';
+@use "~@angular/material/theming" as material;
 
-@include mat-core();
+@include material.mat-core();
 
-$candy-app-primary: mat-palette($mat-red);
-$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+// mat-palette -> Creates a map of hues to colors for a theme (default, lighter, darker) based on a color.
+$candy-app-primary: material.mat-palette(material.$mat-cyan, A200, A100, A400);
+$candy-app-accent: material.mat-palette(material.$mat-pink, 500, 200, 800);
+$candy-app-warn: material.mat-palette(material.$mat-purple);
 
-$candy-app-warn:    mat-palette($mat-red);
-
-$candy-app-theme: mat-light-theme((
-  color: (
-    primary: $candy-app-primary,
-    accent: $candy-app-accent,
-    warn: $candy-app-warn,  
+$candy-app-theme: material.mat-light-theme(
+  (
+    color: (
+      primary: $candy-app-primary,
+      accent: $candy-app-accent,
+      warn: $candy-app-warn,
+    ),
   )
-));
+);
+@debug $candy-app-theme;
 
-@include angular-material-theme($candy-app-theme);
+// Adding additional colors
+$candy-app-success: material.mat-palette(material.$mat-green);
+$candy-app-info: material.mat-palette(material.$mat-blue);
+$candy-app-theme: map.deep-merge(
+                $candy-app-theme,
+                (
+                        succes: $candy-app-success,
+                        info: $candy-app-info,
+                )
+);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@include material.angular-material-theme($candy-app-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
