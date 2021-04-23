@@ -24,7 +24,7 @@ $candy-app-theme: material.mat-light-theme(
 
 // Adding additional colors
 $candy-app-success: material.mat-palette(material.$mat-green);
-$candy-app-info: material.mat-palette(material.$mat-blue);
+$candy-app-info: material.mat-palette(material.$mat-orange);
 $candy-app-theme: map.deep-merge(
                 $candy-app-theme,
                 (
