@@ -4,6 +4,12 @@
 @use './app/banner/banner.component.scss-theme.scss' as banner;
 @use "~@angular/material/theming" as material;
 
+// Override typography
+$material-typography: material.mat-typography-config(
+        $font-family: 'Roboto, sans-serif',
+        $display-4: material.mat-typography-level(95px, 95px, 300, $letter-spacing: -0.05em),   
+);
+
 @include material.mat-core();
 
 // mat-palette -> Creates a map of hues to colors for a theme (default, lighter, darker) based on a color.
@@ -18,6 +24,7 @@ $candy-app-theme: material.mat-light-theme(
                                 accent: $candy-app-accent,
                                 warn: $candy-app-warn,
                         ),
+                        typography: $material-typography
                 )
 );
 @debug $candy-app-theme;
