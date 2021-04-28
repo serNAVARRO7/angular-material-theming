@@ -1,4 +1,6 @@
 @use "~@angular/material/theming" as material;
+@use '../app/banner/banner.component.scss-theme.scss' as banner;
+@use '../app/app.component.scss-theme.scss' as root;
 @use 'sass:map';
 
 // Adding additional colors
@@ -23,4 +25,10 @@ $material-typography: material.mat-typography-config(
                 ),
         )
     );
+}
+
+@mixin create-theme($theme) {
+        @include material.angular-material-theme($theme);
+        @include banner.app-banner-theme($theme);
+        @include root.app-root-theme($theme);
 }

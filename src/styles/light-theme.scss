@@ -18,3 +18,6 @@ $candy-app-theme: material.mat-light-theme(
 );
 
 $candy-app-theme: common.apply-extra-colors($candy-app-theme);
+
+//Generate theme
+@include common.create-theme($candy-app-theme);

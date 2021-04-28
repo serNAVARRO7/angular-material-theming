@@ -1,19 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
-@use 'sass:map';
-@use './app/banner/banner.component.scss-theme.scss' as banner;
 @use "~@angular/material/theming" as material;
-@use './app/app.component.scss-theme.scss' as root;
-@use './assets/styles/dark-theme.scss' as dark;
-@use './assets/styles/light-theme.scss' as light;
+@use './styles/common.scss' as common;
 
-@include material.mat-core();
-
-@mixin create-theme($theme) {
-        @include material.angular-material-theme($theme);
-        @include banner.app-banner-theme($theme);
-        @include root.app-root-theme($theme);
-}
+@include material.mat-core(common.$material-typography);
 
 html,
 body {
@@ -21,12 +10,4 @@ body {
 }
 body {
   margin: 0;
-}
-
-.dark-theme {
-        @include create-theme(dark.$candy-app-theme)
-}
-
-.light-theme {
-        @include create-theme(light.$candy-app-theme)
 }

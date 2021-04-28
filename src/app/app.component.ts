@@ -9,7 +9,7 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  readonly themeAnchor = this.document.getElementById('app-theme');
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2
@@ -18,49 +18,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.renderer.removeClass(this.document.body, 'dark-theme');
-    this.renderer.addClass(this.document.body, 'light-theme');
   }
 
   setTheme({source}: MatSelectChange) {
     if (source.value === 'light') {
-       this.renderer.removeClass(this.document.body, 'dark-theme');
-       this.renderer.addClass(this.document.body, 'light-theme');
+       this.renderer.setAttribute(this.themeAnchor, 'href', '/light-theme.css');
     } else {
-      this.renderer.addClass(this.document.body, 'dark-theme');
-      this.renderer.removeClass(this.document.body, 'light-theme');
+      this.renderer.setAttribute(this.themeAnchor, 'href', '/dark-theme.css');
     }
   }
 }
-
-// *************
-// OTHER OPTION
-// *************
-
-// export class AppComponent implements OnInit {
-//   @HostBinding('class')
-//   currentTheme: 'light-theme' | 'dark-theme' = 'dark-theme';
-
-//   constructor(private overlayContainer: OverlayContainer) {
-
-//   }
-
-//   ngOnInit() {
-//     this.currentTheme = 'dark-theme';
-//     // For mat-select backgrounds and more
-//     this.overlayContainer.getContainerElement().classList.add('dark-theme');
-//     this.overlayContainer.getContainerElement().classList.remove('light-theme');
-//   }
-
-//   setTheme({source}: MatSelectChange) {
-//     if (source.value === 'light') {
-//       this.currentTheme = 'light-theme'
-//       this.overlayContainer.getContainerElement().classList.remove('dark-theme');
-//       this.overlayContainer.getContainerElement().classList.add('light-theme');
-//     } else {
-//       this.currentTheme = 'dark-theme'
-//       this.overlayContainer.getContainerElement().classList.add('dark-theme');
-//       this.overlayContainer.getContainerElement().classList.remove('light-theme');
-//     }
-//   }
-// }
