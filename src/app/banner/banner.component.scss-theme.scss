@@ -62,5 +62,8 @@ $app-banner-density-config: (
     &.app-banner-warn {
       background-color: material.mat-color($warn-color-palette, lighter);
     }
+    // Elevations/Shadows -> the same as class="mat-elevation-z24"
+    // Other option that takes the material colors config: @include material.mat-private-theme-overridable-elevation(7, $theme-colors);
+    @include material.mat-elevation(24, material.mat-color($warn-color-palette, lighter));
   }
 }
