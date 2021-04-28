@@ -1,0 +1,20 @@
+@use "~@angular/material/theming" as material;
+@use './common.scss' as common;
+
+// mat-palette -> Creates a map of hues to colors for a theme (default, lighter, darker) based on a color.
+$candy-app-primary: material.mat-palette(material.$mat-cyan, 500, 200, 700);
+$candy-app-accent: material.mat-palette(material.$mat-pink, A200, A100);
+$candy-app-warn: material.mat-palette(material.$mat-purple);
+
+$candy-app-theme: material.mat-light-theme(
+                (
+                        color: (
+                                primary: $candy-app-primary,
+                                accent: $candy-app-accent,
+                                warn: $candy-app-warn,
+                        ),
+                        typography: common.$material-typography
+                )
+);
+
+$candy-app-theme: common.apply-extra-colors($candy-app-theme);

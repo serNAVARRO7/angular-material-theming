@@ -1,0 +1,26 @@
+@use "~@angular/material/theming" as material;
+@use 'sass:map';
+
+// Adding additional colors
+$candy-app-success: material.mat-palette(material.$mat-green);
+$candy-app-info: material.mat-palette(material.$mat-orange);
+
+// Override typography
+$material-typography: material.mat-typography-config(
+        $font-family: 'Roboto, sans-serif',
+        $display-4: material.mat-typography-level(95px, 95px, 300, $letter-spacing: -0.05em),   
+);
+
+@function apply-extra-colors($candy-app-theme) {
+    @return map.deep-merge(
+        $candy-app-theme,
+        (
+                success: $candy-app-success,
+                info: $candy-app-info,
+                color: (
+                        succes: $candy-app-success,
+                        info: $candy-app-info,
+                ),
+        )
+    );
+}

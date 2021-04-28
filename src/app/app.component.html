@@ -12,11 +12,10 @@
   <app-banner message="This component will get own theme" type="info"></app-banner>
   <section class="sort-area">
     <mat-form-field class="drop-down">
-      <mat-label>Choose an option</mat-label>
-      <mat-select>
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-        <mat-option value="option3">Option 3</mat-option>
+      <mat-label>Choose an theme</mat-label>
+      <mat-select (selectionChange)="setTheme($event)">
+        <mat-option value="light">Light</mat-option>
+        <mat-option value="dark">Dark</mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-raised-button color="accent">Accent</button>
