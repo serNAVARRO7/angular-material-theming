@@ -1,5 +1,26 @@
 @use '~@angular/material/theming' as material;
 
+$app-banner-density-config: (
+  height: (
+    default: 120px,
+    maximum: 150px,
+    minimum: 20px,
+  )
+);
+
+@mixin app-banner-density($density-config){
+  $density-scale: material.mat-get-density-config($density-config);
+  $height: material.mat-private-density-prop-value(
+    $app-banner-density-config,
+    $density-scale,
+    height
+  );
+
+  app-banner {
+    min-height: $height
+  }
+}
+
 @mixin app-banner-typography($typography-config) {
   app-banner {
     .heading {
@@ -23,6 +44,11 @@
   $typography: material.mat-get-typography-config($theme);
   @if $typography != null {
     @include app-banner-typography($typography);
+  }
+
+  $density: material.mat-get-density-config($theme);
+  @if $density != null {
+    @include app-banner-density($density);
   }
 
   app-banner {

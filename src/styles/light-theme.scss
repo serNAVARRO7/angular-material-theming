@@ -13,7 +13,8 @@ $candy-app-theme: material.mat-light-theme(
                                 accent: $candy-app-accent,
                                 warn: $candy-app-warn,
                         ),
-                        typography: common.$material-typography
+                        typography: common.$material-typography,
+                        density: minimum,
                 )
 );
 

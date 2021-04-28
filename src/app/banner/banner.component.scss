@@ -2,5 +2,7 @@
   padding: 5px 15px;
   border-sizing: border-box;
   border-radius: 7px;
-  display: block;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
