@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@use "~@angular/material/theming" as material;
+@use "~@angular/material/theming" as material with ( 
+  // override default properties
+  $cdk-z-index-overlay-backdrop: 950,
+  $cdk-overlay-dark-backdrop-background: rgba(255,0,0,0.5) // dialog background color
+);
 @use './styles/common.scss' as common;
 
 @include material.mat-core(common.$material-typography);

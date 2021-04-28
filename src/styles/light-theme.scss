@@ -1,4 +1,7 @@
-@use "~@angular/material/theming" as material;
+@use "~@angular/material/theming" as material with ( 
+        // override default properties
+        $mat-toolbar-minimum-height: 50px
+);
 @use './common.scss' as common;
 
 // mat-palette -> Creates a map of hues to colors for a theme (default, lighter, darker) based on a color.
